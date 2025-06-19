@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.continents-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom:#EFEFEF 1px solid;
+}
+.continents {
+    font-size:  20px;
+}
+
+.continents:hover {
+    font-weight: 600;
+    border-bottom: #7CAA29 7px solid;
+    cursor: pointer;
+}
+
+.container {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Supported-Countried {
+    font-size: 35px;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
