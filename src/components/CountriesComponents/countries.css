@@ -9,7 +9,7 @@ body {
     border-radius: 50%;
 }
  
-.container-average {
+.container-Countries {
     height: 100%;
     width: 100%;
     display: flex;
@@ -40,9 +40,4 @@ body {
     overflow: hidden; 
     text-overflow:ellipsis;
     white-space: nowrap;
-}
-
-.currency {
-    color: grey;
-    margin-left: 10px;
 }

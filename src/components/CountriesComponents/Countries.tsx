@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../AverageComponents/average.css";
-import { DataType, CountryItem } from "./AfricanСountries/CountryItem";
+import "./countries.css";
+import { DataType, CountryItem } from "./EuropeCountries/CountryItem";
 
 function Countries() {
   const [data, setData] = useState<DataType[]>([]);
@@ -26,7 +26,7 @@ function Countries() {
   }, []);
 
   return (
-    <div className="container-average">
+    <div className="container-Countries">
       {data.map((value, index) => (
         <CountryItem data={value} key={index}/>
       ))}

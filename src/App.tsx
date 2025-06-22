@@ -1,5 +1,5 @@
 import React from 'react';
-import Countries from './components/AverageComponents/Countries';
+import Countries from './components/CountriesComponents/Countries';
 import Header from './components/HeaderComponents/Header'
 
 function App() {

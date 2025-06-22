@@ -18,7 +18,7 @@ export function CountryItem( {data} : {data : DataType}) {
     <div>
       <div className="flags-currency">
         <img src={data.flags.png} alt="" className="flags"/>
-        <span className="currency">({data.cioc})</span>
+        <span>({data.cioc})</span>
       </div>
       <div className="title"><span>{data.name.official}</span></div>
     </div>
