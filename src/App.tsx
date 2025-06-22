@@ -1,12 +1,12 @@
 import React from 'react';
-import Average from './components/AverageComponents/Average';
+import Countries from './components/AverageComponents/Countries';
 import Header from './components/HeaderComponents/Header'
 
 function App() {
   return (
     <div className='container'>
       <Header></Header>
-      <Average></Average>
+      <Countries></Countries>
     </div>
   );
 }
