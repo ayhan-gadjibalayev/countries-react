@@ -6,16 +6,17 @@ body {
 .flags {
     width: 40px;
     height: 40px;
-    border-radius: 100%;
-    background-color: red
+    border-radius: 50%;
 }
-
-.container-average {
+ 
+.container-Countries {
     height: 100%;
     width: 100%;
     display: flex;
     margin-top: 30px;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .nrt {
@@ -31,12 +32,12 @@ body {
 }
 
 .title {
-    padding: 5px 26px;
+    margin: 15px;
+    width: 150px;
+    padding:10px ;
     background-color: #F2F2F2;
     border-radius: 5px;
-}
-
-.currency {
-    color: grey;
-    margin-left: 10px;
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
