@@ -4,8 +4,11 @@ import { DataType, CountryItem } from "./EuropeCountries/CountryItem";
 
 function Countries() {
   const [data, setData] = useState<DataType[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+
     fetch("https://restcountries.com/v3.1/region/europe")
       .then((response) => {
         if (!response.ok) {
@@ -15,26 +18,24 @@ function Countries() {
       })
       .then((data: DataType[]) => {
         setData(data);
-        // setLoading(false);
+        setLoading(false);
         console.log(data);
       })
       .catch((error) => {
-        // setError(error.message);
         console.log(error);
-        // setLoading(false);
+        setLoading(false);
       });
   }, []);
 
   return (
     <div className="container-Countries">
-      {data.map((value, index) => (
-        <CountryItem data={value} key={index}/>
-      ))}
+      {loading ? (
+        <div className="loading-indicator">Загрузка...</div>
+      ) : (
+        data.map((value, index) => <CountryItem data={value} key={index} />)
+      )}
     </div>
   );
 }
 
 export default Countries;
-
-
-
