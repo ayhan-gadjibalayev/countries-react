@@ -34,6 +34,7 @@ function Countries() {
       ) : (
         data.map((value, index) => <CountryItem data={value} key={index} />)
       )}
+
     </div>
   );
 }
