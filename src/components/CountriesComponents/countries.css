@@ -8,6 +8,26 @@ body {
     height: 40px;
     border-radius: 50%;
 }
+
+.flag {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.country-info-block {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-left: 30px;
+    height: 100px;
+}
+
+.country-page {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
  
 .container-Countries {
     height: 100%;
