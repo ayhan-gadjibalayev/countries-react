@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 type Country = {
-  name: {
-    common: string;
+
+name: {
+  common: string;
   };
   flags: {
     png: string;
   };
-  capital: {
-    0: string;
-  };
+  capital: [string];
   region: string;
   languages: Record<string, string>;
   currencies: Record<string, { name: string; symbol: string }>;
@@ -21,7 +19,6 @@ export function CountryPage() {
   const [country, setCountry] = useState<Country | null>(null);
 
   useEffect(() => {
-    // const fetchData = async () => {
     try {
       fetch(`https://restcountries.com/v3.1/name/${name}`)
         .then((response) => {
@@ -32,13 +29,9 @@ export function CountryPage() {
         })
         .then((data: Country[]) => {
           setCountry(data[0]);
-          // setLoading(false);
           console.log(data);
         });
     } catch (error) {}
-    // };
-
-    // fetchData();
   }, []);
 
   return (
@@ -48,7 +41,7 @@ export function CountryPage() {
       <span style={{fontSize:'20px', fontWeight:'700'}}>{country?.name.common}</span>
       <span>Capital: {country?.capital[0]}</span>
       <span>Currencies: {country?.currencies && Object.values(country.currencies).map(currency => `${currency.name} (${currency.symbol})`).join(", ")}</span>
-      <span>Languages:{" "}{country?.languages && Object.values(country.languages)}</span>
+      <span>Languages:{country?.languages && Object.values(country.languages)}</span>
       <span> Region: {country?.region}</span>
       </div>
     </div>
