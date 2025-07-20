@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import Main from "./Main";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CountryPage from "./components/CountryPage";
+import { CountryPage } from "./components/CountryPage";
     
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
