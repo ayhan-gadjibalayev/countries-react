@@ -8,7 +8,7 @@ name: {
   flags: {
     png: string;
   };
-  capital: [string];
+  capital: string[];
   region: string;
   languages: Record<string, string>;
   currencies: Record<string, { name: string; symbol: string }>;
