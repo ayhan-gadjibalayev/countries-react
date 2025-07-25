@@ -12,9 +12,11 @@ body {
 }
 .continents {
     font-size:  20px;
+    cursor: pointer;
+    margin: 10px;
 }
 
-.continents:hover {
+.continents.active {
     font-weight: 600;
     border-bottom: #7CAA29 7px solid;
     cursor: pointer;
@@ -28,7 +30,7 @@ body {
     justify-content: space-between;
 }
 
-.Supported-Countried {
+.supported-countries {
     font-size: 35px;
     margin-bottom: 30px;
     font-weight: 900;
