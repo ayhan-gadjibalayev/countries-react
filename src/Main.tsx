@@ -3,10 +3,10 @@ import Countries from './components/CountriesComponents/Countries';
 import Header from './components/HeaderComponents/Header'
 
 function Main() {
-    const [selected, notSelected] = useState<string | null>(null);
+    const [selected, setSelected] = useState<string | null>("Africa");
   
     const handleClick = (continent: string) => {
-      notSelected(continent === selected ? null : continent);
+      setSelected(continent);
     };
 
   return (
