@@ -23,12 +23,12 @@ export function CountryItem( {data} : {data : DataType}) {
   }
 
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} style={{cursor:'pointer'}} >
       <div className="flags-currency">
         <img src={data.flags.png} alt="" className="flags"/>
         <span>({data.cioc})</span>
       </div>
-      <div className="title"><span>{data.name.official}</span></div>
+      <div className="title"><span title={data.name.official}>{data.name.official}</span></div>
     </div>
   );
 }
