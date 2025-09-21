@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Countries from './components/CountriesComponents/Countries';
-import Header from './components/HeaderComponents/Header'
+import Header from './components/HeaderComponents/Header';
+import { CountryPage } from './components//CountryPage';
 
 function Main() {
     const [selected, setSelected] = useState<string | null>("Africa");
@@ -13,18 +15,26 @@ function Main() {
     <div className='container'>
       <Header></Header>
 
-      <div className="continents-container">
-        <span className={`continents ${selected === 'Africa' ? 'active' : ''}`} 
-              onClick={() => handleClick('Africa')}>Africa</span>
-        <span className={`continents ${selected === 'Asia Pacific' ? 'active' : ''}`} 
-              onClick={() => handleClick('Asia Pacific')}>Asia Pacific</span>
-        <span className={`continents ${selected === 'Europe' ? 'active' : ''}`} 
-              onClick={() => handleClick('Europe')}>Europe</span>
-        <span className={`continents ${selected === 'America' ? 'active' : ''}`} 
-              onClick={() => handleClick('America')}>America</span>
-      </div>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <div className="continents-container">
+              <span className={`continents ${selected === 'Africa' ? 'active' : ''}`} 
+                    onClick={() => handleClick('Africa')}>Africa</span>
+              <span className={`continents ${selected === 'Asia Pacific' ? 'active' : ''}`} 
+                    onClick={() => handleClick('Asia Pacific')}>Asia Pacific</span>
+              <span className={`continents ${selected === 'Europe' ? 'active' : ''}`} 
+                    onClick={() => handleClick('Europe')}>Europe</span>
+              <span className={`continents ${selected === 'America' ? 'active' : ''}`} 
+                    onClick={() => handleClick('America')}>America</span>
+            </div>
 
-      <Countries selected={selected}></Countries>
+            <Countries selected={selected}></Countries>
+          </>
+        } />
+        
+        <Route path="/country/:name" element={<CountryPage />} />
+      </Routes>
     </div>
   );
 }

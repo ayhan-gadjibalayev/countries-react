@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-type Country = {
 
-name: {
-  common: string;
+type Country = {
+  name: {
+    common: string;
+    official: string;
   };
   flags: {
     png: string;
@@ -19,32 +20,46 @@ export function CountryPage() {
   const [country, setCountry] = useState<Country | null>(null);
 
   useEffect(() => {
-    try {
-      fetch(`https://restcountries.com/v3.1/name/${name}`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data: Country[]) => {
-          setCountry(data[0]);
-          console.log(data);
-        });
-    } catch (error) {}
-  }, []);
+    const fetchCountry = async () => {
+      try {
+        const response = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`);
+        
+        if (!response.ok) {
+          throw new Error("Country not found");
+        }
+        
+        const data = await response.json();
+        setCountry(data[0]);
+      } catch (err) {} 
+    };
+
+    if (name) {
+      fetchCountry();
+    }
+  }, [name]);
+
+  if (!country) return;
 
   return (
     <div className="country-page">
-      <img src={country?.flags.png} alt="" className="flag" />
+      
+      <img src={country.flags.png} alt = { country.name.common} className="flag" />
+      
       <div className="country-info-block">
-      <span style={{fontSize:'20px', fontWeight:'700'}}>{country?.name.common}</span>
-      <span>Capital: {country?.capital[0]}</span>
-      <span>Currencies: {country?.currencies && Object.values(country.currencies).map(currency => `${currency.name} (${currency.symbol})`).join(", ")}</span>
-      <span>Languages:{country?.languages && Object.values(country.languages)}</span>
-      <span> Region: {country?.region}</span>
+        <h1>{country.name.common}</h1>
+        <p><strong>Official Name:</strong> {country.name.official}</p>
+        <p><strong>Capital:</strong> {country.capital?.[0] || 'N/A'}</p>
+        <p><strong>Region:</strong> {country.region}</p>        
+        <p><strong>Currencies:</strong> {country.currencies && 
+          Object.entries(country.currencies).map(([code, currency]) => 
+            `${currency.name} (${currency.symbol})`
+          ).join(", ")}
+        </p>
+        
+        <p><strong>Languages:</strong> {country.languages && 
+          Object.values(country.languages).join(", ")}
+        </p>
       </div>
     </div>
   );
 }
-
